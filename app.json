@@ -1,15 +1,14 @@
 {
   "expo": {
-    "name": "MediPocket",
-    "slug": "MediPocket",
-    "version": "1.0.0",
+    "name": "MediPocket World",
+    "slug": "HealthcareApp",
+    "version": "1.1.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "resizeMode": "cover",
+      "backgroundColor": "#40e0d0"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -18,17 +17,59 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "buildNumber": "2.0.1",
+      "infoPlist": {
+        "NSCameraUsageDescription": "This app uses the camera to use video call.",
+        "NSMicrophoneUsageDescription": "This app uses the microphone to use video call."
+      },
+      "usesIcloudStorage": true,
+      "bundleIdentifier": "com.medipocket.world",
+      "icon": "./assets/icon.png"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "backgroundColor": "#40e0d0"
       },
-      "package": "com.medipocketworld.app"
+      "versionCode": 8,
+      "permissions": [
+        "CAMERA",
+        "RECORD_AUDIO"
+      ],
+      "package": "com.medipocket.world"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "description": "",
+    "plugins": [
+      "@react-native-firebase/app",
+      "sentry-expo",
+      [
+        "@stripe/stripe-react-native",
+        {
+          "merchantIdentifier": "merchant.com.medipocket",
+          "enableGooglePay": true
+        }
+      ]
+    ],
+    "hooks": {
+      "postPublish": [
+        {
+          "file": "sentry-expo/upload-sourcemaps",
+          "config": {
+            "organization": "sentinel-hz-nextgen-pvt-ltd",
+            "project": "medipocket-2022",
+            "authToken": "75fcdb35e01c4c009ac66fd6b1c6a708d3e9f6c1a0c44f5983cc06fb43359b95"
+          }
+        }
+      ]
+    },
+    "extra": {
+      "eas": {
+        "projectId": "e3a4b32c-0938-4794-a393-a453d0e4aaae"
+      }
     }
   }
 }
